@@ -1,0 +1,14 @@
+#:schema node_modules/wrangler/config-schema.json
+# Static assets-only Worker: no script, it just serves `dist/` (prerendered HTML + assets).
+name = "madebypepe-site"
+compatibility_date = "2025-06-01"
+
+# Custom domains (created on each deploy). The madebypepe.com zone must be active in
+# Cloudflare and the old A records for the root and www (Hostalia) removed first.
+routes = [
+  { pattern = "madebypepe.com", custom_domain = true },
+  { pattern = "www.madebypepe.com", custom_domain = true },
+]
+
+[assets]
+directory = "./dist"
